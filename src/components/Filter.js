@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { filterProducts, sortProducts } from "../actions/productActions";
+import { connect } from "react-redux";
+import { filterProducts, sortProducts } from "../actions/productActions";
 
 class Filter extends Component {
   render() {
@@ -48,16 +48,15 @@ class Filter extends Component {
     );
   }
 }
-export default Filter;
-// export default connect(
-//   (state) => ({
-//     size: state.products.size,
-//     sort: state.products.sort,
-//     products: state.products.items,
-//     filteredProducts: state.products.filteredItems,
-//   }),
-//   {
-//     filterProducts,
-//     sortProducts,
-//   }
-// )(Filter);
+export default connect(
+  (state) => ({
+    size: state.products.size,
+    sort: state.products.sort,
+    products: state.products.items,
+    filteredProducts: state.products.filteredItems,
+  }),
+  {
+    filterProducts,
+    sortProducts,
+  }
+)(Filter);
